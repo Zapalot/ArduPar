@@ -1,0 +1,56 @@
+\hypertarget{class_abstract_parameter_setting}{\section{Abstract\-Parameter\-Setting Class Reference}
+\label{class_abstract_parameter_setting}\index{Abstract\-Parameter\-Setting@{Abstract\-Parameter\-Setting}}
+}
+
+
+A common interface for all kinds of parameter settings.  
+
+
+
+
+{\ttfamily \#include $<$Ard\-Parameter\-Settings.\-h$>$}
+
+Inheritance diagram for Abstract\-Parameter\-Setting\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_abstract_parameter_setting}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_abstract_parameter_setting_aa4519e15a2b44c4c7031d0d704f7afbb}{{\bfseries Abstract\-Parameter\-Setting} (const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$\hyperlink{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}{cmd\-String}, O\-S\-C\-Server $\ast$server)}\label{class_abstract_parameter_setting_aa4519e15a2b44c4c7031d0d704f7afbb}
+
+\item 
+\hypertarget{class_abstract_parameter_setting_a50b8a828fb479f1a56dd484d384f3004}{virtual void \hyperlink{class_abstract_parameter_setting_a50b8a828fb479f1a56dd484d384f3004}{parse\-Serial\-Data} (char $\ast$data)}\label{class_abstract_parameter_setting_a50b8a828fb479f1a56dd484d384f3004}
+
+\begin{DoxyCompactList}\small\item\em digest incoming serial data that potentially contains a \char`\"{}set\char`\"{} command \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_parameter_setting_a186b590b0138e1c9aa1c92d9d44b4eaf}{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$ \hyperlink{class_abstract_parameter_setting_a186b590b0138e1c9aa1c92d9d44b4eaf}{get\-Adress} ()}\label{class_abstract_parameter_setting_a186b590b0138e1c9aa1c92d9d44b4eaf}
+
+\begin{DoxyCompactList}\small\item\em Get the O\-S\-C Adress of the Setting. \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_parameter_setting_ad246c7882fefad26896f76056cbd505c}{boolean \hyperlink{class_abstract_parameter_setting_ad246c7882fefad26896f76056cbd505c}{is\-Osc\-Message\-For\-Me} (O\-S\-C\-Message $\ast$mes)}\label{class_abstract_parameter_setting_ad246c7882fefad26896f76056cbd505c}
+
+\begin{DoxyCompactList}\small\item\em Return true is the message O\-S\-C Adress is identical to that of the setting. \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_parameter_setting_a6a6fab01d83ea32719b419e3d843e716}{virtual void \hyperlink{class_abstract_parameter_setting_a6a6fab01d83ea32719b419e3d843e716}{parse\-Parameter\-String} (char $\ast$data)=0}\label{class_abstract_parameter_setting_a6a6fab01d83ea32719b419e3d843e716}
+
+\begin{DoxyCompactList}\small\item\em derived classed implement parsing and setting parameters from a string here \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_parameter_setting_aefe541268dbae23700182557c13d6b55}{virtual void \hyperlink{class_abstract_parameter_setting_aefe541268dbae23700182557c13d6b55}{dump\-Parameter\-Info} (Stream $\ast$out)=0}\label{class_abstract_parameter_setting_aefe541268dbae23700182557c13d6b55}
+
+\begin{DoxyCompactList}\small\item\em derived classed can give some information about semselves this way. preferably in a machine-\/readable way. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$ \hyperlink{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}{cmd\-String}}\label{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}
+
+\begin{DoxyCompactList}\small\item\em serial input is parsed for this command string, anything that follows is interpreted as parameter data \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_parameter_setting_aa31842d885d857875270a26e389f1abb}{int \hyperlink{class_abstract_parameter_setting_aa31842d885d857875270a26e389f1abb}{cmd\-String\-Length}}\label{class_abstract_parameter_setting_aa31842d885d857875270a26e389f1abb}
+
+\begin{DoxyCompactList}\small\item\em used for comparisons \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A common interface for all kinds of parameter settings. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Ard\-Parameter\-Settings.\-h\end{DoxyCompactItemize}

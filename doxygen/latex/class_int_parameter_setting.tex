@@ -1,0 +1,76 @@
+\hypertarget{class_int_parameter_setting}{\section{Int\-Parameter\-Setting Class Reference}
+\label{class_int_parameter_setting}\index{Int\-Parameter\-Setting@{Int\-Parameter\-Setting}}
+}
+
+
+{\ttfamily \#include $<$Ard\-Parameter\-Settings.\-h$>$}
+
+Inheritance diagram for Int\-Parameter\-Setting\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_int_parameter_setting}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_int_parameter_setting_a0e4bce4774ac5253a45f8451e7098236}{Int\-Parameter\-Setting} (int $\ast$\hyperlink{class_int_parameter_setting_a1aa7b8fb26fedb2fc1d6a2aa16939242}{value\-Pointer}, int \hyperlink{class_int_parameter_setting_a182af9fe700c0dd905706d0f1d2f6b4c}{min\-Value}, int \hyperlink{class_int_parameter_setting_a8c60a809a280a808cb792cab9b2b29ff}{max\-Value}, const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$\hyperlink{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}{cmd\-String}, O\-S\-C\-Server $\ast$server, int \hyperlink{class_int_parameter_setting_abc7b6763da86459663dfe0cadc40b987}{eeprom\-Adress}=-\/1, boolean initialize\-From\-Eeprom=true)
+\item 
+\hypertarget{class_int_parameter_setting_ab4660fb6cfdf6c65f02969b83e38fc32}{void {\bfseries digest\-Message} (O\-S\-C\-Message $\ast$\-\_\-mes)}\label{class_int_parameter_setting_ab4660fb6cfdf6c65f02969b83e38fc32}
+
+\item 
+\hypertarget{class_int_parameter_setting_a29b18523aee3bf2e5ac54633d9c7ac3e}{virtual void \hyperlink{class_int_parameter_setting_a29b18523aee3bf2e5ac54633d9c7ac3e}{parse\-Parameter\-String} (char $\ast$data)}\label{class_int_parameter_setting_a29b18523aee3bf2e5ac54633d9c7ac3e}
+
+\begin{DoxyCompactList}\small\item\em set the attached integer paramter from a string that was received \end{DoxyCompactList}\item 
+\hypertarget{class_int_parameter_setting_aa5030252409c1fc489f16fe11ced40af}{void {\bfseries set\-Value} (int new\-Value)}\label{class_int_parameter_setting_aa5030252409c1fc489f16fe11ced40af}
+
+\item 
+\hypertarget{class_int_parameter_setting_a1cb2f858b9e61f652863cdd787926885}{virtual void \hyperlink{class_int_parameter_setting_a1cb2f858b9e61f652863cdd787926885}{dump\-Parameter\-Info} (Stream $\ast$out)}\label{class_int_parameter_setting_a1cb2f858b9e61f652863cdd787926885}
+
+\begin{DoxyCompactList}\small\item\em give human\&machine readably status info \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_int_parameter_setting_a1aa7b8fb26fedb2fc1d6a2aa16939242}{int $\ast$ \hyperlink{class_int_parameter_setting_a1aa7b8fb26fedb2fc1d6a2aa16939242}{value\-Pointer}}\label{class_int_parameter_setting_a1aa7b8fb26fedb2fc1d6a2aa16939242}
+
+\begin{DoxyCompactList}\small\item\em points to the parameter value to be set \end{DoxyCompactList}\item 
+\hypertarget{class_int_parameter_setting_abc7b6763da86459663dfe0cadc40b987}{int \hyperlink{class_int_parameter_setting_abc7b6763da86459663dfe0cadc40b987}{eeprom\-Adress}}\label{class_int_parameter_setting_abc7b6763da86459663dfe0cadc40b987}
+
+\begin{DoxyCompactList}\small\item\em an adress in eeprom memory for permanent storage of the parameter value. When $<$0 no storage will happen \end{DoxyCompactList}\item 
+\hypertarget{class_int_parameter_setting_a182af9fe700c0dd905706d0f1d2f6b4c}{int \hyperlink{class_int_parameter_setting_a182af9fe700c0dd905706d0f1d2f6b4c}{min\-Value}}\label{class_int_parameter_setting_a182af9fe700c0dd905706d0f1d2f6b4c}
+
+\begin{DoxyCompactList}\small\item\em lower Bound of the Parameter. Received values are constrained to be in the Range of \mbox{[}min\-Value,max\-Value\mbox{]} \end{DoxyCompactList}\item 
+\hypertarget{class_int_parameter_setting_a8c60a809a280a808cb792cab9b2b29ff}{int \hyperlink{class_int_parameter_setting_a8c60a809a280a808cb792cab9b2b29ff}{max\-Value}}\label{class_int_parameter_setting_a8c60a809a280a808cb792cab9b2b29ff}
+
+\begin{DoxyCompactList}\small\item\em upper Bound of the Parameter. Received values are constrained to be in the Range of \mbox{[}min\-Value,max\-Value\mbox{]} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a setting for integer values with optional eeprom persistency 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_int_parameter_setting_a0e4bce4774ac5253a45f8451e7098236}{\index{Int\-Parameter\-Setting@{Int\-Parameter\-Setting}!Int\-Parameter\-Setting@{Int\-Parameter\-Setting}}
+\index{Int\-Parameter\-Setting@{Int\-Parameter\-Setting}!IntParameterSetting@{Int\-Parameter\-Setting}}
+\subsubsection[{Int\-Parameter\-Setting}]{\setlength{\rightskip}{0pt plus 5cm}Int\-Parameter\-Setting\-::\-Int\-Parameter\-Setting (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{value\-Pointer, }
+\item[{int}]{min\-Value, }
+\item[{int}]{max\-Value, }
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{cmd\-String, }
+\item[{O\-S\-C\-Server $\ast$}]{server, }
+\item[{int}]{eeprom\-Adress = {\ttfamily -\/1}, }
+\item[{boolean}]{initialize\-From\-Eeprom = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_int_parameter_setting_a0e4bce4774ac5253a45f8451e7098236}
+
+\begin{DoxyParams}{Parameters}
+{\em eeprom\-Adress} & an adress in eeprom memory for permanent storage of the parameter value. When $<$0 no storage will happen \\
+\hline
+{\em initialize\-From\-Eeprom} & should the parameter value be initialized from eeprom on startup? \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Ard\-Parameter\-Settings.\-h\end{DoxyCompactItemize}

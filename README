@@ -1,0 +1,19 @@
+A library for convenient parameter settings on Arduino.
+
+By Felix Bonowski.
+
+Web: syntheticmatter.wordpress.com
+
+
+Main features:
+- Int, float and string support
+- Setting values via Serial input
+- Optional persistency by automatically saving and restoring values to/from EEPROM
+- Optional support for setting by OSC Messages (needs ArdoscForWiFlyHq)
+- A "Trigger Setting" that can call back an arbitrary function
+- A parameter dump in a human&machine readable format
+
+
+Version History:
+
+30-July-2012	1.0 Initial public version

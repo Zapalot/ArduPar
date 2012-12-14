@@ -1,0 +1,78 @@
+\hypertarget{class_string_parameter_setting}{\section{String\-Parameter\-Setting Class Reference}
+\label{class_string_parameter_setting}\index{String\-Parameter\-Setting@{String\-Parameter\-Setting}}
+}
+
+
+{\ttfamily \#include $<$Ard\-Parameter\-Settings.\-h$>$}
+
+Inheritance diagram for String\-Parameter\-Setting\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_string_parameter_setting}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_string_parameter_setting_a7427b2114af11abb584a9bf10f591d7f}{String\-Parameter\-Setting} (char $\ast$\hyperlink{class_string_parameter_setting_a9bb351a9ba7b80dc6eef47c0f54fb98c}{value\-Pointer}, int \hyperlink{class_string_parameter_setting_ae04aa807e2f40b0f607d05c4a780a03c}{max\-Length}, const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$\hyperlink{class_abstract_parameter_setting_a038edb8c34265166b4d7927cf0ee2776}{cmd\-String}, O\-S\-C\-Server $\ast$server, int \hyperlink{class_string_parameter_setting_a4947df623519cd98c5d0ac3194b8c9f1}{eeprom\-Adress}=-\/1, boolean initialize\-From\-Eeprom=true)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{class_string_parameter_setting_adec828dedd036d85c0e1c01ec726f5bb}{void {\bfseries digest\-Message} (O\-S\-C\-Message $\ast$\-\_\-mes)}\label{class_string_parameter_setting_adec828dedd036d85c0e1c01ec726f5bb}
+
+\item 
+\hypertarget{class_string_parameter_setting_a55259da6ddd7a0922938ed3b815babdc}{virtual void \hyperlink{class_string_parameter_setting_a55259da6ddd7a0922938ed3b815babdc}{parse\-Parameter\-String} (char $\ast$data)}\label{class_string_parameter_setting_a55259da6ddd7a0922938ed3b815babdc}
+
+\begin{DoxyCompactList}\small\item\em set the string parameter from the remaining data. one leading character after the command name is skipped \end{DoxyCompactList}\item 
+\hypertarget{class_string_parameter_setting_a8094c55ba7b9a313757d08689805f901}{void {\bfseries save\-Value} ()}\label{class_string_parameter_setting_a8094c55ba7b9a313757d08689805f901}
+
+\item 
+\hypertarget{class_string_parameter_setting_a9cd404fbc74d7c815a3a9d952f2bdfec}{virtual void \hyperlink{class_string_parameter_setting_a9cd404fbc74d7c815a3a9d952f2bdfec}{dump\-Parameter\-Info} (Stream $\ast$out)}\label{class_string_parameter_setting_a9cd404fbc74d7c815a3a9d952f2bdfec}
+
+\begin{DoxyCompactList}\small\item\em give human\&machine readably status info \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_string_parameter_setting_a9bb351a9ba7b80dc6eef47c0f54fb98c}{char $\ast$ \hyperlink{class_string_parameter_setting_a9bb351a9ba7b80dc6eef47c0f54fb98c}{value\-Pointer}}\label{class_string_parameter_setting_a9bb351a9ba7b80dc6eef47c0f54fb98c}
+
+\begin{DoxyCompactList}\small\item\em points to the parameter value to be set \end{DoxyCompactList}\item 
+\hypertarget{class_string_parameter_setting_a4947df623519cd98c5d0ac3194b8c9f1}{int \hyperlink{class_string_parameter_setting_a4947df623519cd98c5d0ac3194b8c9f1}{eeprom\-Adress}}\label{class_string_parameter_setting_a4947df623519cd98c5d0ac3194b8c9f1}
+
+\begin{DoxyCompactList}\small\item\em an adress in eeprom memory for permanent storage of the parameter value. When $<$0 no storage will happen \end{DoxyCompactList}\item 
+\hypertarget{class_string_parameter_setting_ae04aa807e2f40b0f607d05c4a780a03c}{int \hyperlink{class_string_parameter_setting_ae04aa807e2f40b0f607d05c4a780a03c}{max\-Length}}\label{class_string_parameter_setting_ae04aa807e2f40b0f607d05c4a780a03c}
+
+\begin{DoxyCompactList}\small\item\em maximum Length the buffers can hold \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a setting for string values with optional eeprom persistency 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_string_parameter_setting_a7427b2114af11abb584a9bf10f591d7f}{\index{String\-Parameter\-Setting@{String\-Parameter\-Setting}!String\-Parameter\-Setting@{String\-Parameter\-Setting}}
+\index{String\-Parameter\-Setting@{String\-Parameter\-Setting}!StringParameterSetting@{String\-Parameter\-Setting}}
+\subsubsection[{String\-Parameter\-Setting}]{\setlength{\rightskip}{0pt plus 5cm}String\-Parameter\-Setting\-::\-String\-Parameter\-Setting (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{value\-Pointer, }
+\item[{int}]{max\-Length, }
+\item[{const \-\_\-\-\_\-\-Flash\-String\-Helper $\ast$}]{cmd\-String, }
+\item[{O\-S\-C\-Server $\ast$}]{server, }
+\item[{int}]{eeprom\-Adress = {\ttfamily -\/1}, }
+\item[{boolean}]{initialize\-From\-Eeprom = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_string_parameter_setting_a7427b2114af11abb584a9bf10f591d7f}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Length} & maximum Length the buffers can hold \\
+\hline
+{\em eeprom\-Adress} & an adress in eeprom memory for permanent storage of the parameter value. When $<$0 no storage will happen \\
+\hline
+{\em initialize\-From\-Eeprom} & should the parameter value be initialized from eeprom on startup? \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Ard\-Parameter\-Settings.\-h\end{DoxyCompactItemize}
