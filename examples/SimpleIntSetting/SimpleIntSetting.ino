@@ -1,3 +1,7 @@
+// Shows how to set up an integer setting that can be controlled via serial input
+// Created 2012 by Felix Bonowski.
+// This example code is in the public domain.
+
 #include <ArduPar.h>
 #include <avr/eeprom.h>
 

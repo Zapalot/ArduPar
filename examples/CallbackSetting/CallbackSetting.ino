@@ -1,13 +1,15 @@
+// Shows how to set up a callback that can be triggered by a serial command
+// Created 2012 by Felix Bonowski.
+// This example code is in the public domain.
+
 #include <ArduPar.h>
 #include <avr/eeprom.h>
-// The Arduinos EERPROM is used to save setting values when powered off. The settings themselves will take care of the adressing.
-// See the "Advanced" Example for less automation and more manual control
 
 // Create an integer setting that can by set via Serial and will remember its value even if the board is powered off.
 // It needs to be setup() to be of any use.
 IntArduPar someIntSetting;
 
-CallbackArduPar parDumpCallback;  //"setting" is misleading, this will just call a function to give you all parameters currently defined
+CallbackArduPar parDumpCallback;  // Callbacks can be used to remotely trigger any function.
 
 
 
@@ -22,10 +24,10 @@ void setup(){
     );
   
   // The library has a built in function that will tell you all the parameters and their values.
-  //its name is dumpParameterInfos(). This "Callbacksetting withh call the attached function when its command is received.
+  //its name is dumpParameterInfos(). This "Callbacksetting with call the attached function when its command is received.
   parDumpCallback.setup(
     F("dump"),
-    &dumpParameterInfos
+    &dumpParameterInfos	//you could use any of your own functions here instead
     );
   
   

@@ -1,14 +1,16 @@
+// Shows how to set up an OSC controlled parameter using the WiFlyHQ and ArdOSCForWiFlyHQ libraries
+// Created 2012 by Felix Bonowski.
+// This example code is in the public domain.
 
 //by adding this define, we tell the compiler that we want to use the OSC functionality of the library
 #define USE_OSC
-// osc functionality depends on other libraries
+// osc functionality depends on other libraries that can be found on my GitHub Page
 #include <WiFlyHQ.h>
 #include <ArdOSCForWiFlyHQ.h>
 #include <ArduPar.h>
 
 // the oscSetup.h takes care of all the complexity of setting up Wifi and osc.
 #include "oscSetup.h"
-//Everything that is necessary for an integer setting that can by set via Serial and will persist even if the board is powered off:
 
 // Create an integer setting that can by set via Serial and will remember its value even if the board is powered off.
 // It needs to be setup() to be of any use.
