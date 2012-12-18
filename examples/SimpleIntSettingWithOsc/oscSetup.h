@@ -24,6 +24,7 @@ void configureWiFly(
 WiFly* wiFly,
 HardwareSerial* wiflySerial,
 const uint32_t newSerialSpeed,
+const bool tryOtherSpeeds,	///< should we try some other baudrates if the currently selected one fails?
 const char* SSID,
 const char* password,
 const char* deviceID,      ///< for identifacation in the network
@@ -43,9 +44,12 @@ const uint16_t remotePort
     newSerialSpeed,9600, 19200, 38400, 57600, 115200      };
 
   int speedIndex=0;
+  int maxSpeedIndex;
+  if(tryOtherSpeeds){maxSpeedIndex=6;}else{ maxSpeedIndex=1;}; 
   boolean baudrateFound=false;
   TRACELN(F("Trying to connect to WiFly"));
-  for (speedIndex=0;speedIndex<6;speedIndex++){
+  
+  for (speedIndex=0;speedIndex<maxSpeedIndex;speedIndex++){
     TRACE(F("Connecting to Wifly using Baudrate:"));
     TRACELN(serialSpeeds[speedIndex]);
     wiflySerial->begin(serialSpeeds[speedIndex]);
@@ -198,8 +202,6 @@ const uint16_t remotePort
     TRACELN(F("WiFly setup finished"));
 }
 
-
-
 void printWiFlyInfo(){
   wifly.startCommand();
   char buf[32];
@@ -237,4 +239,8 @@ void printWiFlyInfo(){
   wifly.finishCommand();
 
 }
+
+
+
+
 

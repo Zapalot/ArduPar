@@ -12,7 +12,7 @@
 
 // Create an integer setting that can by set via Serial and will remember its value even if the board is powered off.
 // It needs to be setup() to be of any use.
-IntParameterSetting someIntSetting;
+IntArduPar someIntSetting;
 
 
 void setup(){
@@ -20,12 +20,13 @@ void setup(){
    
   configureWiFly(
     &wifly,
-    &Serial2,  //this assumes you use a Arduino MEGA board with additional UARTS. The Wifly will also work on a software serial, but only at low baudrates.
-    115200,    // a more reasonable baudrate than the 9600 default... 
-    "link-local",
-    "12BZr2mM3FLrRSL8",
-    "WiFly",      // for identification in the network
-    0,         // IP Adress of the Wifly. if 0 (without quotes), it will use dhcp to get an ip
+    &Serial2,	// this assumes you use a Arduino MEGA board with additional UARTS. The Wifly will also work on a software serial, but only at low baudrates.
+    115200,		// a more reasonable baudrate than the 9600 default... 
+    false,		// try different baud rates until one fits
+    "YourWifiName",
+    "YourWifiPassword",
+    "WiFly",		// Name od the Wifly for identification in the network
+    0,				// IP Adress of the Wifly. if 0 (without quotes), it will use dhcp to get an ip
     8000,                    // WiFly receive port
     "255.255.255.255",       // Where to send outgoing Osc messages. "255.255.255.255" will send to all hosts in the subnet
     8001                     // outgoing port
