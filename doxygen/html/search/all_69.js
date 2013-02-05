@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['intparametersetting',['IntParameterSetting',['../class_int_parameter_setting.html',1,'IntParameterSetting'],['../class_int_parameter_setting.html#a0e4bce4774ac5253a45f8451e7098236',1,'IntParameterSetting::IntParameterSetting()']]],
-  ['isoscmessageforme',['isOscMessageForMe',['../class_abstract_parameter_setting.html#ad246c7882fefad26896f76056cbd505c',1,'AbstractParameterSetting']]]
+  ['intardupar',['IntArduPar',['../class_int_ardu_par.html',1,'IntArduPar'],['../class_int_ardu_par.html#ac27cd460cc76ac692238c14f15e83c8d',1,'IntArduPar::IntArduPar()']]]
 ];

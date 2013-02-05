@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getadress',['getAdress',['../class_abstract_parameter_setting.html#a186b590b0138e1c9aa1c92d9d44b4eaf',1,'AbstractParameterSetting']]]
+  ['getadressfor',['getAdressFor',['../class_eeprom_adress_manager.html#adb2199ebdaed0c8436095e7b89aa3990',1,'EepromAdressManager']]]
 ];

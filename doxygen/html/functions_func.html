@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,37 +91,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 &#160;<ul>
 <li>dumpParameterInfo()
-: <a class="el" href="class_abstract_parameter_setting.html#aefe541268dbae23700182557c13d6b55">AbstractParameterSetting</a>
-, <a class="el" href="class_string_parameter_setting.html#a9cd404fbc74d7c815a3a9d952f2bdfec">StringParameterSetting</a>
-, <a class="el" href="class_callback_parameter_setting.html#a1e5a275e4af43bf708e1b03d2b9ba1e3">CallbackParameterSetting</a>
-, <a class="el" href="class_int_parameter_setting.html#a1cb2f858b9e61f652863cdd787926885">IntParameterSetting</a>
+: <a class="el" href="class_abstract_ardu_par.html#a0cdb0e2a3a7e10b9d2fc208aac874792">AbstractArduPar</a>
+, <a class="el" href="class_long_ardu_par.html#a4efcc0006c2129750916366fb954bfc9">LongArduPar</a>
+, <a class="el" href="class_string_ardu_par.html#a0a24cbf161c7b223e670f14a23ab5efb">StringArduPar</a>
+, <a class="el" href="class_callback_ardu_par.html#af37de401277fb45499f13f3791ee7eb2">CallbackArduPar</a>
+, <a class="el" href="class_int_ardu_par.html#ac257bdc06b9dd4277386401cdd3a0b87">IntArduPar</a>
 </li>
-<li>getAdress()
-: <a class="el" href="class_abstract_parameter_setting.html#a186b590b0138e1c9aa1c92d9d44b4eaf">AbstractParameterSetting</a>
+<li>getAdressFor()
+: <a class="el" href="class_eeprom_adress_manager.html#adb2199ebdaed0c8436095e7b89aa3990">EepromAdressManager</a>
 </li>
-<li>IntParameterSetting()
-: <a class="el" href="class_int_parameter_setting.html#a0e4bce4774ac5253a45f8451e7098236">IntParameterSetting</a>
-</li>
-<li>isOscMessageForMe()
-: <a class="el" href="class_abstract_parameter_setting.html#ad246c7882fefad26896f76056cbd505c">AbstractParameterSetting</a>
+<li>IntArduPar()
+: <a class="el" href="class_int_ardu_par.html#ac27cd460cc76ac692238c14f15e83c8d">IntArduPar</a>
 </li>
 <li>parseParameterString()
-: <a class="el" href="class_abstract_parameter_setting.html#a6a6fab01d83ea32719b419e3d843e716">AbstractParameterSetting</a>
-, <a class="el" href="class_int_parameter_setting.html#a29b18523aee3bf2e5ac54633d9c7ac3e">IntParameterSetting</a>
-, <a class="el" href="class_string_parameter_setting.html#a55259da6ddd7a0922938ed3b815babdc">StringParameterSetting</a>
-, <a class="el" href="class_callback_parameter_setting.html#affc622e278342f3231941e623c0d0ad9">CallbackParameterSetting</a>
+: <a class="el" href="class_abstract_ardu_par.html#afe9f2cd41979498fb139c210e2f27232">AbstractArduPar</a>
+, <a class="el" href="class_int_ardu_par.html#ae14861a950951b698799083868e6afa6">IntArduPar</a>
+, <a class="el" href="class_long_ardu_par.html#ac45e113a6c4833cf58a100726c2281a7">LongArduPar</a>
+, <a class="el" href="class_string_ardu_par.html#aad04a197b3be3f1e4bc613d00008e2ed">StringArduPar</a>
+, <a class="el" href="class_callback_ardu_par.html#a6118824a6f32851646bcef14c7d4d0d0">CallbackArduPar</a>
 </li>
 <li>parseSerialData()
-: <a class="el" href="class_abstract_parameter_setting.html#a50b8a828fb479f1a56dd484d384f3004">AbstractParameterSetting</a>
+: <a class="el" href="class_abstract_ardu_par.html#ad4f7f05cf3828d7b7a636883722b48ba">AbstractArduPar</a>
 </li>
-<li>StringParameterSetting()
-: <a class="el" href="class_string_parameter_setting.html#a7427b2114af11abb584a9bf10f591d7f">StringParameterSetting</a>
+<li>saveValue()
+: <a class="el" href="class_string_ardu_par.html#ae53606bc617a8490fb226b1177cd3772">StringArduPar</a>
+</li>
+<li>setup()
+: <a class="el" href="class_abstract_ardu_par.html#a1c8083d6669e0e1ca471c2e5eca11715">AbstractArduPar</a>
+, <a class="el" href="class_callback_ardu_par.html#a181dd2c8de22b4cfd38890f005363df3">CallbackArduPar</a>
+, <a class="el" href="class_long_ardu_par.html#a4b833ecde3632e82986eb41c43a6e3db">LongArduPar</a>
+, <a class="el" href="class_string_ardu_par.html#ae09ef5441d0e0653638530eac3591fa4">StringArduPar</a>
+, <a class="el" href="class_int_ardu_par.html#a97169c10ae1d967a1d305161c329fbcd">IntArduPar</a>
+</li>
+<li>setValue()
+: <a class="el" href="class_long_ardu_par.html#a6b35ec56aece254c695c56950c866f5e">LongArduPar</a>
+, <a class="el" href="class_int_ardu_par.html#a21e5fa0fb19ccb55cdc3dd04b46c7633">IntArduPar</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 30 2012 14:10:53 for ArdParameterSettings by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 19 2012 11:36:54 for ArdParameterSettings by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

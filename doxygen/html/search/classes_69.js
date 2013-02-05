@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['intparametersetting',['IntParameterSetting',['../class_int_parameter_setting.html',1,'']]]
+  ['intardupar',['IntArduPar',['../class_int_ardu_par.html',1,'']]]
 ];
