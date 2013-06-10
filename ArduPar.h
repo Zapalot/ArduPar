@@ -36,11 +36,11 @@ public OscMessageSink
 #endif
 {
 public:
-   __FlashStringHelper* cmdString;           ///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
+   const __FlashStringHelper* cmdString;           ///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
   int cmdStringLength;                            ///< used for comparisons
  /// Initialize the setting. Has to be called for the setting to become usable.
   void setup(
-   __FlashStringHelper* cmdString	///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
+   const __FlashStringHelper* cmdString	///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
 #ifdef USE_OSC
     , OSCServer *server
 #endif
@@ -119,7 +119,7 @@ public:
   }
 /// set up the setting. has to be called to make it functional
   void setup(
-	  __FlashStringHelper* cmdString,
+	  const __FlashStringHelper* cmdString,
 	  int minValue,
 	  int maxValue,
 	  boolean isPersistent=true,      ///< should the parameter value be initialized from eeprom on startup?
@@ -219,7 +219,7 @@ public:
 	void (*callbackFunction)(void);   ///< points to the function to be called      
 	/// Initialize the setting. Has to be called for the setting to become usable.
 	void setup(
-		__FlashStringHelper* cmdString,		///< The string that will trigger the function.
+		const __FlashStringHelper* cmdString,		///< The string that will trigger the function.
 		void (*callbackFunction)(void)			///< A pointer to the function that will be triggered.
 		#ifdef USE_OSC
 			,OSCServer *server=globalArduParOscServer
@@ -273,7 +273,7 @@ public:
 
  /// Initialize the setting. Has to be called for the setting to become usable.
   void setup(
-	__FlashStringHelper* cmdString,	///< Osc Adress of the setting
+	const __FlashStringHelper* cmdString,	///< Osc Adress of the setting
 	char* valuePointer,	///< points to the buffer where incoming strings will be written
   	int maxLength,          ///< maximum number of chars the buffer can hold
 	boolean isPersistent=true,      ///< should the parameter value be initialized from eeprom on startup?
@@ -420,7 +420,7 @@ public:
   long maxValue;        ///< upper Bound of the Parameter. Received values are constrained to be in the Range of [minValue,maxValue]
 
   void setup(
-	  __FlashStringHelper* cmdString,
+	  const __FlashStringHelper* cmdString,
 	  long minValue,
 	  long maxValue,
 	boolean isPersistent=true,      ///< should the parameter value be initialized from eeprom on startup?
@@ -512,6 +512,116 @@ public:
   } 
 };
 
+////////////////////
+/// a setting for integer values with optional eeprom persistency
+class FloatArduPar: 
+public AbstractArduPar{
+public:
+  float value;
+  float* valuePointer;   ///< points to the parameter value to be set
+  int eepromAdress;    ///< an adress in eeprom memory for permanent storage of the parameter value. When <0 no storage will happen
+  float minValue;        ///< lower Bound of the Parameter. Received values are constrained to be in the Range of [minValue,maxValue]
+  float maxValue;        ///< upper Bound of the Parameter. Received values are constrained to be in the Range of [minValue,maxValue]
+
+  ///simplest possible constructor, will use own value and no persistency
+  FloatArduPar():
+  value(0),
+  valuePointer(&this->value)
+  {
+  }
+/// set up the setting. has to be called to make it functional
+  void setup(
+	  const __FlashStringHelper* cmdString,
+	  float minValue,
+	  float maxValue,
+	  boolean isPersistent=true,      ///< should the parameter value be initialized from eeprom on startup?
+    float* valuePointer=0,			///< the setting can modify an arbitrary location im memory if you give it here. 
+	int fixedEEPROMAdress=-1		///< if you want a specific fixed adress, specify it here
+	#ifdef USE_OSC
+	  ,OSCServer *server=globalArduParOscServer
+	#endif
+  ){
+  if(valuePointer==0)valuePointer=&this->value;
+	this->valuePointer=valuePointer;
+	this->minValue=minValue;
+	this->maxValue=maxValue;
+	#ifdef USE_OSC
+		AbstractArduPar::setup(cmdString,server);
+	#else
+		AbstractArduPar::setup(cmdString);
+	#endif
+	if(isPersistent){
+	
+		if(fixedEEPROMAdress==-1){TRACE((F("Getting EEPROM. Adress: ")));fixedEEPROMAdress=EepromAdressManager::getAdressFor(sizeof(float));};
+		this->eepromAdress=fixedEEPROMAdress;
+		TRACE((F("Init from EEPROM. Adress: ")));
+		TRACE((int)(eepromAdress));
+		eeprom_read_block(valuePointer,(void *) eepromAdress,sizeof(float)); 
+		TRACE((F(" value:")));
+		TRACELN((*valuePointer));
+	}else{
+		this->eepromAdress=-1; // used to signal non-persistence to other methods
+	};	
+  };
+
+  //optional osc support
+#ifdef USE_OSC
+  void digestMessage(OSCMessage *_mes){
+    if(!isOscMessageForMe(_mes))return;
+    float newValue;
+    if(_mes->getArgTypeTag(0)=='i'){
+      newValue =  (float)_mes->getArgInt32(0);
+    }
+    else{
+      if(_mes->getArgTypeTag(0)=='f'){ 
+        newValue = _mes->getArgFloat(0);
+      }    
+      else{
+        return;
+      }
+    }
+    setValue(newValue);
+  };
+#endif
+
+  ///set the attached integer parameter from a string that was received
+  virtual void parseParameterString(char* data){
+    setValue(atof(data));
+  };
+
+  //set the value and rpint some debug info
+  void setValue(float newValue){
+    newValue=constrain(newValue,minValue,maxValue);
+    TRACE((F("Setting ")));
+    TRACE((this->cmdString));
+    TRACE((F(" to ")));
+    TRACE((newValue));
+    TRACE((F("\n")));
+    *valuePointer=newValue;
+    //save the new value
+    if(eepromAdress>=0){
+      TRACE((F("Writing EEProm adress")));
+      TRACE(eepromAdress);
+      TRACE((F("\n")));
+      eeprom_write_block(valuePointer,(void *) eepromAdress,sizeof(float)); 
+
+    }
+  };
+  /// give human&machine readably status info
+  virtual void dumpParameterInfo(Stream* out){
+    out->print(F("float\t"));
+    out->print(this->cmdString);
+    out->print(F("\t"));
+    out->print(this->cmdString);
+    out->print(F("\t"));
+    out->print(*valuePointer);
+    out->print(F("\t"));
+    out->print(minValue);
+    out->print(F("\t"));
+    out->print(maxValue);
+    out->print(F("\n"));
+  } 
+};
 
 
 
