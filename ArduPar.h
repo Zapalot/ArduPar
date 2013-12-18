@@ -38,6 +38,7 @@ public OscMessageSink
 public:
    const __FlashStringHelper* cmdString;           ///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
   int cmdStringLength;                            ///< used for comparisons
+  bool valueReceived;								///< indicates that a new value was received either from a Stream or by OSC. Set to false to be notified again.
  /// Initialize the setting. Has to be called for the setting to become usable.
   void setup(
    const __FlashStringHelper* cmdString	///< serial input is parsed for this command string, anything that follows is interpreted as parameter data
@@ -49,7 +50,7 @@ public:
 	TRACELN((cmdString));
 	this->cmdString=cmdString;
 	this->cmdStringLength=strlen_P((const char PROGMEM *)cmdString);
-	
+    valueReceived=false;
     //register instance in the global array
     if(PAR_SETTINGS_CUR_INSTANCE_NUMBER<PAR_SETTINGS_MAX_NUMBER){
       PAR_SETTINGS_INSTANCES[PAR_SETTINGS_CUR_INSTANCE_NUMBER]=this;
@@ -156,7 +157,9 @@ public:
 #ifdef USE_OSC
   void digestMessage(OSCMessage *_mes){
     if(!isOscMessageForMe(_mes))return;
+
     int newValue;
+	//check argument type.
     if(_mes->getArgTypeTag(0)=='i'){
       newValue =  _mes->getArgInt32(0);
     }
@@ -179,6 +182,7 @@ public:
 
   //set the value and rpint some debug info
   void setValue(int newValue){
+	valueReceived=true; // flag: I got new data!
     newValue=constrain(newValue,minValue,maxValue);
     TRACE((F("Setting ")));
     TRACE((this->cmdString));
@@ -312,8 +316,10 @@ public:
   void digestMessage(OSCMessage *_mes){
      if(!isOscMessageForMe(_mes))return;
     if(_mes->getArgTypeTag(0)=='s'){
+	  valueReceived=true; // flag: I got new data!
       char* messageString=_mes->getArgStringData(0);
       int copyLength=min(maxLength,_mes->getArgStringSize(0));
+
       strncpy(valuePointer,messageString,copyLength);
       valuePointer[maxLength-1]=0;  //make sure the string is terminated
       saveValue();
@@ -326,6 +332,7 @@ public:
   virtual void parseParameterString(char* data){
     int dataLength=strlen(data);
     if(dataLength>1){
+	  valueReceived=true; // flag: I got new data!
       //skip first char.
       data++;dataLength--;
       
@@ -480,6 +487,7 @@ public:
 
   //set the value and rpint some debug info
   void setValue(long newValue){
+	  valueReceived=true; // flag: I got new data!
 	newValue=constrain(newValue,minValue,maxValue);
     TRACE((F("Setting ")));
     TRACE((this->cmdString));
@@ -591,6 +599,7 @@ public:
 
   //set the value and rpint some debug info
   void setValue(float newValue){
+	valueReceived=true; // flag: I got new data!
     newValue=constrain(newValue,minValue,maxValue);
     TRACE((F("Setting ")));
     TRACE((this->cmdString));
