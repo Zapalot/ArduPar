@@ -1,1 +1,0 @@
-int	/someInt	someInt	0	0	10
